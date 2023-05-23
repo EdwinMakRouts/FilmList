@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="alert_style">
+
+        <!-- Cambia el color de fondo del diálogo de alerta -->
+        <item name="android:background">@drawable/rounded_gray_background</item>
+        <item name="android:backgroundTint">@color/blue_gray_white</item>
+
+        <!-- Cambia el color del título del diálogo de alerta -->
+        <item name="android:textColorPrimary">@color/white</item>
+
+        <!-- Cambia el color del texto del contenido del diálogo de alerta -->
+        <item name="android:textColor">@android:color/white</item>
+
+    </style>
+</resources>

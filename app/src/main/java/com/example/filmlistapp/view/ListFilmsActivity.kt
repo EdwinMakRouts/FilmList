@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.ContextThemeWrapper
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import com.example.filmlistapp.BuildConfig
@@ -47,7 +48,15 @@ class ListFilmsActivity : AppCompatActivity() {
         })
 
         binding.information.setOnClickListener {
-            //TODO
+            val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.alert_style))
+            builder.setTitle("INFORMATION")
+            builder.setMessage("Project made by: Edwin Makoveev Routskaia \nAPI: themoviedb (TMDB)")
+            builder.setPositiveButton("OK") { _, _ ->
+                //Nothing
+            }
+            val alertDialog = builder.create()
+            alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            alertDialog.show()
         }
 
         binding.list.setOnItemClickListener { adapterView, view, i, l ->
@@ -59,12 +68,6 @@ class ListFilmsActivity : AppCompatActivity() {
             intent.putExtra("overview", movie.overview)
             intent.putExtra("path", movie.poster_path)
             startActivity(intent)
-
-//            val builder = AlertDialog.Builder(this)
-//            builder.setView(R.layout.activity_film_details)
-//            val dialog = builder.create()
-//            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//            dialog.show()
         }
 
     }
