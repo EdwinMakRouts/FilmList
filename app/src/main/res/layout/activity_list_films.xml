@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/rounded_white_background"
     android:backgroundTint="@color/white"
-    tools:context=".ListFilmsActivity">
+    tools:context=".view.ListFilmsActivity">
 
     <TextView
         android:id="@+id/title"

@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">FilmList</string>
     <string name="film_name"> Search Movie</string>
+    <string name="original_language">Language: </string>
+    <string name="overview">Overview: </string>
+    <string name="title">Title:</string>
+    <string name="release_date">Release date:</string>
 
 </resources>

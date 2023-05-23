@@ -1,10 +1,17 @@
-package com.example.filmlistapp
+package com.example.filmlistapp.view
 
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AlertDialog
+import com.example.filmlistapp.BuildConfig
+import com.example.filmlistapp.R
+import com.example.filmlistapp.api.Movie
 import com.example.filmlistapp.api.MovieListResponse
 import com.example.filmlistapp.api.RetrofitInstance.service
 
@@ -15,6 +22,7 @@ import retrofit2.Response
 
 class ListFilmsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityListFilmsBinding
+    private lateinit var movies: List<Movie>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +50,23 @@ class ListFilmsActivity : AppCompatActivity() {
             //TODO
         }
 
+        binding.list.setOnItemClickListener { adapterView, view, i, l ->
+            val movie = movies.get(i)
+            var intent = Intent(this, FilmDetailsActivity::class.java)
+            intent.putExtra("title", movie.title)
+            intent.putExtra("language", movie.original_language)
+            intent.putExtra("date", movie.release_date)
+            intent.putExtra("overview", movie.overview)
+            intent.putExtra("path", movie.poster_path)
+            startActivity(intent)
+
+//            val builder = AlertDialog.Builder(this)
+//            builder.setView(R.layout.activity_film_details)
+//            val dialog = builder.create()
+//            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//            dialog.show()
+        }
+
     }
 
     private fun searchMovie(inputText: String) {
@@ -54,6 +79,7 @@ class ListFilmsActivity : AppCompatActivity() {
                 if (response.isSuccessful){
                     val movieList = response.body()?.results
                     if (movieList != null){
+                        movies = movieList
                         val titlesArray = movieList.map { movie -> movie.title }.toTypedArray()
                         binding.list.adapter = ArrayAdapter (this@ListFilmsActivity, android.R.layout.simple_list_item_1, titlesArray)
                     }
@@ -77,6 +103,7 @@ class ListFilmsActivity : AppCompatActivity() {
                 if (response.isSuccessful){
                     val movieList = response.body()?.results
                     if (movieList != null){
+                        movies = movieList
                         val titlesArray = movieList.map { movie -> movie.title }.toTypedArray()
                         binding.list.adapter = ArrayAdapter (this@ListFilmsActivity, android.R.layout.simple_list_item_1, titlesArray)
                     }
