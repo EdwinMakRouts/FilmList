@@ -15,6 +15,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+        buildConfigField "String", "API", "\"${properties.getProperty("API_KEY")}\""
     }
 
     buildTypes {
@@ -38,6 +42,7 @@ android {
 
 dependencies {
 
+    implementation 'io.github.cdimascio:dotenv-kotlin:3.0.0'
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
