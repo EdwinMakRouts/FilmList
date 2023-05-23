@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">FilmList</string>
-    <string name="film_name"> Search the movie details</string>
+    <string name="film_name"> Search Movie</string>
 
 </resources>

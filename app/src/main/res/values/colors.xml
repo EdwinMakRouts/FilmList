@@ -8,5 +8,6 @@
     <color name="blue"> #0758DB </color>
     <color name="gray"> #355E9F </color>
     <color name="blue_gray"> #487FD9 </color>
+    <color name="blue_gray_white">#7199DA</color>
 
 </resources>
