@@ -38,6 +38,10 @@ class ListFilmsActivity : AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {}
         })
 
+        binding.information.setOnClickListener {
+            //TODO
+        }
+
     }
 
     private fun searchMovie(inputText: String) {
