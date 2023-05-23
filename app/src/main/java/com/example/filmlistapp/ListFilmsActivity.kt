@@ -45,7 +45,7 @@ class ListFilmsActivity : AppCompatActivity() {
     }
 
     private fun searchMovie(inputText: String) {
-        val call = service.searchMovie("2adee9cc3aeb30e836d5bb3db4bf6f1f", inputText)
+        val call = service.searchMovie(BuildConfig.API, inputText)
         call.enqueue(object: retrofit2.Callback<MovieListResponse>{
             override fun onResponse(
                 call: Call<MovieListResponse>,
@@ -68,7 +68,7 @@ class ListFilmsActivity : AppCompatActivity() {
     }
 
     private fun getPopularMovies (){
-        val call = service.getPopularMovies("2adee9cc3aeb30e836d5bb3db4bf6f1f")
+        val call = service.getPopularMovies(BuildConfig.API)
         call.enqueue(object: retrofit2.Callback<MovieListResponse>{
             override fun onResponse(
                 call: Call<MovieListResponse>,
